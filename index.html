@@ -28,7 +28,7 @@
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 3.0rem;
       color: var(--accent);
       text-shadow:
         0 0 5px var(--accent),
@@ -36,8 +36,10 @@
         0 0 20px var(--accent),
         0 0 30px var(--primary);
       animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite;
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
       line-height: 1.4;
+      font-weight: bolder;
+      margin-top: 50;
     }
 
     @keyframes float {
@@ -139,9 +141,9 @@
 
   <script>
     function createHearts() {
-      for (let i = 0; i < 20; i++) {
+      for (let i = 0; i < 10; i++) {
         const heart = document.createElement('div');
-        heart.textContent = '❤️';
+        heart.textContent = '💖';
         heart.style.position = 'fixed';
         heart.style.left = Math.random() * 100 + 'vw';
         heart.style.top = Math.random() * 100 + 'vh';
