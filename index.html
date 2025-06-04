@@ -218,7 +218,63 @@
 	else {
 		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
 	}
-	// ]]>
+	
+</script>
+	<script>
+  // Audio control - add this to your existing script section
+  document.addEventListener('DOMContentLoaded', function() {
+    const audio = document.getElementById('birthdayAudio');
+    audio.volume = 0.7; // Set volume to 30% to not be too loud
+    
+    // Enable audio on first user interaction (required by most browsers)
+    function enableAudio() {
+      audio.play().catch(e => console.log("Audio play requires user interaction first"));
+      document.removeEventListener('click', enableAudio);
+      document.removeEventListener('touchstart', enableAudio);
+    }
+    
+    // Listen for both mouse clicks and touch events
+    document.addEventListener('click', enableAudio);
+    document.addEventListener('touchstart', enableAudio);
+    
+    // Optional: Add music toggle button
+    const musicBtn = document.createElement('button');
+    musicBtn.innerHTML = '🔊 Music';
+    musicBtn.style.position = 'fixed';
+    musicBtn.style.bottom = '20px';
+    musicBtn.style.right = '20px';
+    musicBtn.style.zIndex = '1000';
+    musicBtn.style.padding = '8px 15px';
+    musicBtn.style.borderRadius = '20px';
+    musicBtn.style.border = 'none';
+    musicBtn.style.cursor = 'pointer';
+    musicBtn.style.backgroundColor = 'rgba(255,255,255,0.3)';
+    musicBtn.style.color = 'white';
+    musicBtn.style.fontFamily = 'Arial, sans-serif';
+    
+    musicBtn.addEventListener('click', function() {
+      if (audio.paused) {
+        audio.play();
+        musicBtn.innerHTML = '🔊 Music';
+      } else {
+        audio.pause();
+        musicBtn.innerHTML = '🔇 Music';
+      }
+    });
+    
+    document.body.appendChild(musicBtn);
+  });
+
+  // Your existing functions below...
+  function createHearts() {
+    // ... keep your existing heart creation code ...
+  }
+
+  function sparkleEffect() {
+    // ... keep your existing sparkle effect code ...
+  }
+
+  document.getElementById('cake').addEventListener('click', sparkleEffect);
 </script>
 </body>
 </html>
