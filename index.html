@@ -1,11 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Happy Birthday Chilli !</title>
-  <!-- Replace your current viewport tag with this -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -138,7 +136,7 @@
   <h1>🎉 Happy<br>Birthday<br>Sarah 🎂</h1>
 
   <div id="cake"></div>
- <button="btn">Click for a Surprise</button>
+ <button class="btn">Click for a Surprise</button>
 
 <!-- Place this where your current audio element is (before the closing </body> tag) -->
 <audio id="birthdayAudio" loop>
@@ -147,6 +145,41 @@
   Your browser does not support the audio element.
 </audio>
 
+  <script>
+    function createHearts() {
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement('div');
+        heart.textContent = '❤️';
+        heart.style.position = 'fixed';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = Math.random() * 100 + 'vh';
+        heart.style.fontSize = Math.random() * 24 + 16 + 'px';
+        heart.style.opacity = 0.8;
+        heart.style.animation = `floatHeart ${2 + Math.random() * 4}s ease-in-out infinite`;
+        heart.style.zIndex = 999;
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 10000);
+      }
+    }
+
+    function sparkleEffect() {
+      for (let i = 0; i < 15; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.textContent = '✨';
+        sparkle.style.position = 'fixed';
+        sparkle.style.left = (window.innerWidth / 2) + (Math.random() * 100 - 50) + 'px';
+        sparkle.style.top = (window.innerHeight / 2) + (Math.random() * 100 - 50) + 'px';
+        sparkle.style.opacity = 0.8;
+        sparkle.style.fontSize = '20px';
+        sparkle.style.animation = 'sparkleFade 1s ease-out';
+        sparkle.style.zIndex = 1000;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 1000);
+      }
+    }
+
+    document.getElementById('cake').addEventListener('click', sparkleEffect);
+  </script>
 
 <!-- Code injected by live-server -->
 <script>
@@ -233,27 +266,22 @@
     document.body.appendChild(musicBtn);
   });
 
-function createHearts() {
-  const heartCount = window.innerWidth < 768 ? 12 : 20; // Fewer hearts on mobile
-  
-  for (let i = 0; i < heartCount; i++) {
-    const heart = document.createElement('div');
-    heart.innerHTML = '❤️';
-    heart.style.cssText = `
-      position: fixed;
-      left: ${Math.random() * 100}vw;
-      top: ${Math.random() * 100}vh;
-      font-size: ${Math.random() * (window.innerWidth < 768 ? 16 : 24) + 16}px;
-      opacity: 0.8;
-      animation: floatHeart ${2 + Math.random() * 4}s ease-in-out infinite;
-      z-index: 999;
-      pointer-events: none;
-      will-change: transform;
-    `;
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 8000);
+  // Heart creation function
+  function createHearts() {
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement('div');
+      heart.textContent = '❤️';
+      heart.style.position = 'fixed';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.top = Math.random() * 100 + 'vh';
+      heart.style.fontSize = Math.random() * 24 + 16 + 'px';
+      heart.style.opacity = 0.8;
+      heart.style.animation = `floatHeart ${2 + Math.random() * 4}s ease-in-out infinite`;
+      heart.style.zIndex = 999;
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }
   }
-}
 
   // Sparkle effect (keep your existing code)
   function sparkleEffect() {
