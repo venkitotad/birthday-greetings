@@ -185,26 +185,27 @@
 	
 </script>
 	<script>
-  // Audio control - add this to your existing script section
   document.addEventListener('DOMContentLoaded', function() {
+    // Audio control
     const audio = document.getElementById('birthdayAudio');
-    audio.volume = 0.7; // Set volume to 30% to not be too loud
+    audio.volume = 0.7;
     
-    // Enable audio on first user interaction (required by most browsers)
     function enableAudio() {
       audio.play().catch(e => console.log("Audio play requires user interaction first"));
       document.removeEventListener('click', enableAudio);
       document.removeEventListener('touchstart', enableAudio);
     }
     
-    // Listen for both mouse clicks and touch events
     document.addEventListener('click', enableAudio);
     document.addEventListener('touchstart', enableAudio);
     
-    // Optional: Add music toggle button
+    // Add click event to surprise button
+    const surpriseBtn = document.querySelector('.btn');
+    surpriseBtn.addEventListener('click', createHearts);
+    
+    // Music toggle button
     const musicBtn = document.createElement('button');
     musicBtn.innerHTML = '🔊 Music';
-    musicBtn.style.display = 'none';
     musicBtn.style.position = 'fixed';
     musicBtn.style.bottom = '20px';
     musicBtn.style.right = '20px';
@@ -229,40 +230,42 @@
     
     document.body.appendChild(musicBtn);
   });
- function createHearts() {
-      for (let i = 0; i < 20; i++) {
-        const heart = document.createElement('div');
-        heart.textContent = '❤️';
-        heart.style.position = 'fixed';
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.top = Math.random() * 100 + 'vh';
-        heart.style.fontSize = Math.random() * 24 + 16 + 'px';
-        heart.style.opacity = 0.8;
-        heart.style.animation = `floatHeart ${2 + Math.random() * 4}s ease-in-out infinite`;
-        heart.style.zIndex = 999;
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 10000);
-      }
-    }
 
-    // Sparkle effect
-    function sparkleEffect() {
-      for (let i = 0; i < 15; i++) {
-        const sparkle = document.createElement('div');
-        sparkle.textContent = '✨';
-        sparkle.style.position = 'fixed';
-        sparkle.style.left = (window.innerWidth / 2) + (Math.random() * 100 - 50) + 'px';
-        sparkle.style.top = (window.innerHeight / 2) + (Math.random() * 100 - 50) + 'px';
-        sparkle.style.opacity = 0.8;
-        sparkle.style.fontSize = '20px';
-        sparkle.style.animation = 'sparkleFade 1s ease-out';
-        sparkle.style.zIndex = 1000;
-        document.body.appendChild(sparkle);
-        setTimeout(() => sparkle.remove(), 1000);
- 
-      }
-    }	    
+  // Heart creation function
+  function createHearts() {
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement('div');
+      heart.textContent = '❤';
+      heart.style.position = 'fixed';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.top = Math.random() * 100 + 'vh';
+      heart.style.fontSize = Math.random() * 24 + 16 + 'px';
+      heart.style.opacity = 0.8;
+      heart.style.animation = floatHeart ${2 + Math.random() * 4}s ease-in-out infinite;
+      heart.style.zIndex = 999;
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }
+  }
+
+  // Sparkle effect (keep your existing code)
+  function sparkleEffect() {
+    for (let i = 0; i < 15; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.textContent = '✨';
+      sparkle.style.position = 'fixed';
+      sparkle.style.left = (window.innerWidth / 2) + (Math.random() * 100 - 50) + 'px';
+      sparkle.style.top = (window.innerHeight / 2) + (Math.random() * 100 - 50) + 'px';
+      sparkle.style.opacity = 0.8;
+      sparkle.style.fontSize = '20px';
+      sparkle.style.animation = 'sparkleFade 1s ease-out';
+      sparkle.style.zIndex = 1000;
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 1000);
+    }
+  }
+
   document.getElementById('cake').addEventListener('click', sparkleEffect);
-</script>	
-</body>	
+</script>
+</body>
 </html>
