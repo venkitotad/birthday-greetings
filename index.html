@@ -184,7 +184,7 @@
 	}
 	
 </script>
-	<script>
+		<script>
   document.addEventListener('DOMContentLoaded', function() {
     // Audio control
     const audio = document.getElementById('birthdayAudio');
@@ -193,11 +193,11 @@
     function enableAudio() {
       audio.play().catch(e => console.log("Audio play requires user interaction first"));
       document.removeEventListener('click', enableAudio);
-      document.removeEventListener('click', enableAudio);
+      document.removeEventListener('touchstart', enableAudio);
     }
     
     document.addEventListener('click', enableAudio);
-    document.addEventListener('click', enableAudio);
+    document.addEventListener('touchstart', enableAudio);
     
     // Add click event to surprise button
     const surpriseBtn = document.querySelector('.btn');
@@ -205,8 +205,7 @@
     
     // Music toggle button
     const musicBtn = document.createElement('button');
-    musicBtn.innerHTML = '';
-    musicBtn.style.display = 'none';
+    musicBtn.innerHTML = '🔊 Music';
     musicBtn.style.position = 'fixed';
     musicBtn.style.bottom = '20px';
     musicBtn.style.right = '20px';
@@ -222,10 +221,10 @@
     musicBtn.addEventListener('click', function() {
       if (audio.paused) {
         audio.play();
-        musicBtn.innerHTML = '';
+        musicBtn.innerHTML = '🔊 Music';
       } else {
         audio.pause();
-        musicBtn.innerHTML = '';
+        musicBtn.innerHTML = '🔇 Music';
       }
     });
     
@@ -236,7 +235,7 @@
   function createHearts() {
     for (let i = 0; i < 20; i++) {
       const heart = document.createElement('div');
-      heart.textContent = '❤️';
+      heart.textContent = '❤';
       heart.style.position = 'fixed';
       heart.style.left = Math.random() * 100 + 'vw';
       heart.style.top = Math.random() * 100 + 'vh';
@@ -268,6 +267,7 @@
 
   document.getElementById('cake').addEventListener('click', sparkleEffect);
 </script>
+
 	
 </body>
 </html>
