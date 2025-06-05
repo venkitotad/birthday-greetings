@@ -186,27 +186,12 @@
 </script>
 	<script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Audio control
     const audio = document.getElementById('birthdayAudio');
     audio.volume = 0.7;
-    
-    function enableAudio() {
-      audio.play().catch(e => console.log("Audio play requires user interaction first"));
-      document.removeEventListener('click', enableAudio);
-      document.removeEventListener('click for a Surprise', enableAudio);
-    }
-    
-    document.addEventListener('click', enableAudio);
-    document.addEventListener('click for a Surprise', enableAudio);
-    
-    // Add click event to surprise button
-    const surpriseBtn = document.querySelector('.btn');
-    surpriseBtn.addEventListener('click', createHearts);
-    
-    // Music toggle button
+
+    // Music toggle button (optional - remove if you don't want separate control)
     const musicBtn = document.createElement('button');
-    musicBtn.innerHTML = '';
-    musicBtn.style.display = "none";
+    musicBtn.innerHTML = '🔊 Music';
     musicBtn.style.position = 'fixed';
     musicBtn.style.bottom = '20px';
     musicBtn.style.right = '20px';
@@ -221,51 +206,78 @@
     
     musicBtn.addEventListener('click', function() {
       if (audio.paused) {
-        audio.play();
-        musicBtn.innerHTML = '';
+        audio.play().catch(e => console.log("Audio error:", e));
+        musicBtn.innerHTML = '🔊 Music';
       } else {
         audio.pause();
-        musicBtn.innerHTML = '';
+        musicBtn.innerHTML = '🔇 Music';
       }
     });
     
     document.body.appendChild(musicBtn);
+
+    // Surprise button functionality
+    const surpriseBtn = document.querySelector('.btn');
+    
+    function handleSurprise() {
+      // Play music (will only work after user interaction)
+      audio.play().catch(e => console.log("Audio play requires user interaction"));
+      
+      // Create hearts
+      createHearts();
+    }
+    
+    // Add both touch and click events to surprise button only
+    surpriseBtn.addEventListener('click', handleSurprise);
+    surpriseBtn.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      handleSurprise();
+    }, {passive: false});
   });
 
   // Heart creation function
   function createHearts() {
-    for (let i = 0; i < 20; i++) {
+    const heartCount = window.innerWidth < 768 ? 15 : 20;
+    
+    for (let i = 0; i < heartCount; i++) {
       const heart = document.createElement('div');
-      heart.textContent = '❤️';
-      heart.style.position = 'fixed';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.top = Math.random() * 100 + 'vh';
-      heart.style.fontSize = Math.random() * 24 + 16 + 'px';
-      heart.style.opacity = 0.8;
-      heart.style.animation = `floatHeart ${2 + Math.random() * 4}s ease-in-out infinite`;
-      heart.style.zIndex = 999;
+      heart.innerHTML = '❤️';
+      heart.style.cssText = `
+        position: fixed;
+        left: ${Math.random() * 100}vw;
+        top: ${Math.random() * 100}vh;
+        font-size: ${Math.random() * (window.innerWidth < 768 ? 16 : 24) + 16}px;
+        opacity: 0.8;
+        animation: floatHeart ${2 + Math.random() * 4}s ease-in-out infinite;
+        z-index: 999;
+        pointer-events: none;
+      `;
       document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 10000);
+      setTimeout(() => heart.remove(), 8000);
     }
   }
 
-  // Sparkle effect (keep your existing code)
+  // Sparkle effect
   function sparkleEffect() {
     for (let i = 0; i < 15; i++) {
       const sparkle = document.createElement('div');
-      sparkle.textContent = '✨';
-      sparkle.style.position = 'fixed';
-      sparkle.style.left = (window.innerWidth / 2) + (Math.random() * 100 - 50) + 'px';
-      sparkle.style.top = (window.innerHeight / 2) + (Math.random() * 100 - 50) + 'px';
-      sparkle.style.opacity = 0.8;
-      sparkle.style.fontSize = '20px';
-      sparkle.style.animation = 'sparkleFade 1s ease-out';
-      sparkle.style.zIndex = 1000;
+      sparkle.innerHTML = '✨';
+      sparkle.style.cssText = `
+        position: fixed;
+        left: ${(window.innerWidth / 2) + (Math.random() * 100 - 50)}px;
+        top: ${(window.innerHeight / 2) + (Math.random() * 100 - 50)}px;
+        opacity: 0.8;
+        font-size: 20px;
+        animation: sparkleFade 1s ease-out;
+        z-index: 1000;
+        pointer-events: none;
+      `;
       document.body.appendChild(sparkle);
       setTimeout(() => sparkle.remove(), 1000);
     }
   }
 
+  // Cake click event
   document.getElementById('cake').addEventListener('click', sparkleEffect);
 </script>
 </body>
