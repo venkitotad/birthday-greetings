@@ -229,7 +229,36 @@
     
     document.body.appendChild(musicBtn);
   });
+ function createHearts() {
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement('div');
+        heart.textContent = '❤️';
+        heart.style.position = 'fixed';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = Math.random() * 100 + 'vh';
+        heart.style.fontSize = Math.random() * 24 + 16 + 'px';
+        heart.style.opacity = 0.8;
+        heart.style.animation = `floatHeart ${2 + Math.random() * 4}s ease-in-out infinite`;
+        heart.style.zIndex = 999;
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 10000);
+      }
+    }
 
+    // Sparkle effect
+    function sparkleEffect() {
+      for (let i = 0; i < 15; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.textContent = '✨';
+        sparkle.style.position = 'fixed';
+        sparkle.style.left = (window.innerWidth / 2) + (Math.random() * 100 - 50) + 'px';
+        sparkle.style.top = (window.innerHeight / 2) + (Math.random() * 100 - 50) + 'px';
+        sparkle.style.opacity = 0.8;
+        sparkle.style.fontSize = '20px';
+        sparkle.style.animation = 'sparkleFade 1s ease-out';
+        sparkle.style.zIndex = 1000;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 1000);
   // Your existing functions below...
   function createHearts() {
     // ... keep your existing heart creation code ...
