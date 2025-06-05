@@ -192,12 +192,12 @@
     
     function enableAudio() {
       audio.play().catch(e => console.log("Audio play requires user interaction first"));
-      document.removeEventListener('Click for a Surprise ', enableAudio);
-      document.removeEventListener('Click for a Surprise', enableAudio);
+      document.removeEventListener('click for a surprise ', enableAudio);
+      document.removeEventListener('click for a Surprise', enableAudio);
     }
     
-    document.addEventListener('Click for a Surprise', enableAudio);
-    document.addEventListener('Click for a Surprise', enableAudio);
+    document.addEventListener('click for a Surprise', enableAudio);
+    document.addEventListener('click for a Surprise', enableAudio);
     
     // Add click event to surprise button
     const surpriseBtn = document.querySelector('.btn');
