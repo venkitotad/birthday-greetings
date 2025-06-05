@@ -140,21 +140,30 @@
 </audio>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const audio = document.getElementById('birthdayAudio');
-      audio.volume = 0.9;
+    // document.addEventListener('click', function () {
+    //   const audio = document.getElementById('birthdayAudio');
+    //   audio.volume = 0.9;
 
-      function enableAudio() {
-        audio.play().catch(e => console.log("Audio play requires user interaction first"));
-        //document.removeEventListener('click', enableAudio);
-        //document.removeEventListener('click', enableAudio);
-      }
+    //   function enableAudio() {
+    //     audio.play().catch(e => console.log("Audio play requires user interaction first"));
+    //     //document.removeEventListener('click', enableAudio);
+    //     //document.removeEventListener('click', enableAudio);
+    //   }
 
      // document.addEventListener('click', enableAudio);
     //  document.addEventListener('touchstart', enableAudio);
 
       const surpriseBtn = document.querySelector('.btn');
       surpriseBtn.addEventListener('click', createHearts);
+
+      if(createHearts){
+      function enableAudio() {
+         audio.play().catch(e => console.log("Audio play requires user interaction first"));
+         document.removeEventListener('click', enableAudio);
+         //document.removeEventListener('click', enableAudio);
+      }
+        
+      }
 
       const musicBtn = document.createElement('button');
       musicBtn.innerHTML = '🔊 Music';
