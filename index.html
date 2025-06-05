@@ -131,7 +131,7 @@
 
   <h1>🎉 Happy<br>Birthday<br>Sarah 🎂</h1>
   <div id="cake"></div>
-  <button class="btn" onclick=enableAudio()>Click for a Surprise</button>
+  <button class="btn">Click for a Surprise</button>
 
  <audio id="birthdayAudio" loop>
   <source src="birth_greeting].mp3" type="audio/mpeg">
@@ -142,7 +142,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const audio = document.getElementById('birthdayAudio');
-      audio.volume = 0.7;
+      audio.volume = 0.9;
 
       function enableAudio() {
         audio.play().catch(e => console.log("Audio play requires user interaction first"));
