@@ -194,21 +194,21 @@
       document.body.appendChild(musicBtn);
     });
 
-    function createHearts() {
-      for (let i = 0; i < 20; i++) {
-        const heart = document.createElement('div');
-        heart.textContent = '❤️';
-        heart.style.position = 'fixed';
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.top = Math.random() * 100 + 'vh';
-        heart.style.fontSize = Math.random() * 24 + 16 + 'px';
-        heart.style.opacity = 0.8;
-        heart.style.animation = `floatHeart ${2 + Math.random() * 4}s ease-in-out infinite`;
-        heart.style.zIndex = 999;
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 10000);
-      }
-    }
+    // function createHearts() {
+    //   for (let i = 0; i < 20; i++) {
+    //     const heart = document.createElement('div');
+    //     heart.textContent = '❤️';
+    //     heart.style.position = 'fixed';
+    //     heart.style.left = Math.random() * 100 + 'vw';
+    //     heart.style.top = Math.random() * 100 + 'vh';
+    //     heart.style.fontSize = Math.random() * 24 + 16 + 'px';
+    //     heart.style.opacity = 0.8;
+    //     heart.style.animation = `floatHeart ${2 + Math.random() * 4}s ease-in-out infinite`;
+    //     heart.style.zIndex = 999;
+    //     document.body.appendChild(heart);
+    //     setTimeout(() => heart.remove(), 10000);
+    //   }
+    // }
 
     function sparkleEffect() {
       for (let i = 0; i < 15; i++) {
