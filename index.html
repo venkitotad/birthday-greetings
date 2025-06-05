@@ -222,10 +222,10 @@
     musicBtn.addEventListener('click', function() {
       if (audio.paused) {
         audio.play();
-        musicBtn.innerHTML = '🔊 Music';
+        musicBtn.innerHTML = '';
       } else {
         audio.pause();
-        musicBtn.innerHTML = '🔇 Music';
+        musicBtn.innerHTML = '';
       }
     });
     
