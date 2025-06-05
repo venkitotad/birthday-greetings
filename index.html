@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Happy Birthday Chilli !</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Replace your current viewport tag with this -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -137,7 +138,7 @@
   <h1>🎉 Happy<br>Birthday<br>Sarah 🎂</h1>
 
   <div id="cake"></div>
- <button class="btn">Click for a Surprise</button>
+ <click="btn">Click for a Surprise</click>
 
 <!-- Place this where your current audio element is (before the closing </body> tag) -->
 <audio id="birthdayAudio" loop>
@@ -232,22 +233,27 @@
     document.body.appendChild(musicBtn);
   });
 
-  // Heart creation function
-  function createHearts() {
-    for (let i = 0; i < 20; i++) {
-      const heart = document.createElement('div');
-      heart.textContent = '❤️';
-      heart.style.position = 'fixed';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.top = Math.random() * 100 + 'vh';
-      heart.style.fontSize = Math.random() * 24 + 16 + 'px';
-      heart.style.opacity = 0.8;
-      heart.style.animation = `floatHeart ${2 + Math.random() * 4}s ease-in-out infinite`;
-      heart.style.zIndex = 999;
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 10000);
-    }
+function createHearts() {
+  const heartCount = window.innerWidth < 768 ? 12 : 20; // Fewer hearts on mobile
+  
+  for (let i = 0; i < heartCount; i++) {
+    const heart = document.createElement('div');
+    heart.innerHTML = '❤️';
+    heart.style.cssText = `
+      position: fixed;
+      left: ${Math.random() * 100}vw;
+      top: ${Math.random() * 100}vh;
+      font-size: ${Math.random() * (window.innerWidth < 768 ? 16 : 24) + 16}px;
+      opacity: 0.8;
+      animation: floatHeart ${2 + Math.random() * 4}s ease-in-out infinite;
+      z-index: 999;
+      pointer-events: none;
+      will-change: transform;
+    `;
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 8000);
   }
+}
 
   // Sparkle effect (keep your existing code)
   function sparkleEffect() {
