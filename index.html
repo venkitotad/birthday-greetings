@@ -141,8 +141,8 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const audio = document.getElementById('birthdayAudio');
-      audio.volume = 0.9;
+      //const audio = document.getElementById('birthdayAudio');
+    
 
       function enableAudio() {
         audio.play().catch(e => console.log("Audio play requires user interaction first"));
@@ -155,6 +155,7 @@
 
 const surpriseBtn = document.querySelector('.btn');
 const audio = document.getElementById('birthdayAudio');
+audio.volume = 0.9;
 
 surpriseBtn.addEventListener('click', function() {
   if (audio.paused) {
