@@ -230,7 +230,7 @@
     
     // Add both touch and click events to surprise button only
     surpriseBtn.addEventListener('click', handleSurprise);
-    surpriseBtn.addEventListener('touchstart', function(e) {
+    surpriseBtn.addEventListener('click', function(e) {
       e.preventDefault();
       handleSurprise();
     }, {passive: false});
