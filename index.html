@@ -191,7 +191,7 @@
 
     // Music toggle button (optional - remove if you don't want separate control)
     const musicBtn = document.createElement('button');
-    musicBtn.innerHTML = '🔊 Music';
+    musicBtn.innerHTML = '';
     musicBtn.style.position = 'fixed';
     musicBtn.style.bottom = '20px';
     musicBtn.style.right = '20px';
@@ -207,10 +207,10 @@
     musicBtn.addEventListener('click', function() {
       if (audio.paused) {
         audio.play().catch(e => console.log("Audio error:", e));
-        musicBtn.innerHTML = '🔊 Music';
+        musicBtn.innerHTML = '';
       } else {
         audio.pause();
-        musicBtn.innerHTML = '🔇 Music';
+        musicBtn.innerHTML = 'c';
       }
     });
     
