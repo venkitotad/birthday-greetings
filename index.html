@@ -140,30 +140,31 @@
 </audio>
 
   <script>
-    // document.addEventListener('click', function () {
-    //   const audio = document.getElementById('birthdayAudio');
-    //   audio.volume = 0.9;
+    const audio = document.getElementById('birthdayAudio');
 
-    //   function enableAudio() {
-    //     audio.play().catch(e => console.log("Audio play requires user interaction first"));
-    //     //document.removeEventListener('click', enableAudio);
-    //     //document.removeEventListener('click', enableAudio);
-    //   }
+  function enableAudio() {
+    audio.volume = 0.9;
+    audio.play().catch(e => console.log("Autoplay blocked. Requires user interaction."));
+  }
 
-     // document.addEventListener('click', enableAudio);
-    //  document.addEventListener('touchstart', enableAudio);
+  function createHearts() {
+    enableAudio(); // Play song here
 
-      const surpriseBtn = document.querySelector('.btn');
-      surpriseBtn.addEventListener('click', createHearts);
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement('div');
+      heart.textContent = '❤️';
+      heart.style.position = 'fixed';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.top = Math.random() * 100 + 'vh';
+      heart.style.fontSize = Math.random() * 24 + 16 + 'px';
+      heart.style.opacity = 0.8;
+      heart.style.animation = `floatHeart ${2 + Math.random() * 4}s ease-in-out infinite`;
+      heart.style.zIndex = 999;
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }
+  }
 
-      if(createHearts){
-      function enableAudio() {
-         audio.play().catch(e => console.log("Audio play requires user interaction first"));
-         document.removeEventListener('click', enableAudio);
-         //document.removeEventListener('click', enableAudio);
-      }
-        
-      }
 
       const musicBtn = document.createElement('button');
       musicBtn.innerHTML = '🔊 Music';
