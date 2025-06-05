@@ -153,8 +153,16 @@
        document.addEventListener('click', enableAudio);
        document.addEventListener('touchstart', enableAudio);
 
-       const surpriseBtn = document.querySelector('.btn');
-       surpriseBtn.addEventListener('click', createHearts);
+const surpriseBtn = document.querySelector('.btn');
+const audio = document.getElementById('birthdayAudio');
+
+surpriseBtn.addEventListener('click', function() {
+  if (audio.paused) {
+    audio.play().catch(e => console.log("Audio play requires user interaction first"));
+  }
+  
+  createHearts();
+});
 
       const musicBtn = document.createElement('button');
       musicBtn.innerHTML = '🔊 Music';
