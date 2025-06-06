@@ -116,7 +116,7 @@
 
   <h1>🎉 Happy<br>Birthday<br>Sarah 🎂</h1>
 
-  <div id="cake"></div>
+  <div id="cake">🍰</div>
   <button class="btn">Click for a Surprise</button>
 
   <audio id="birthdayAudio" loop preload="auto">
@@ -131,9 +131,9 @@
     audio.volume = 0.9;
 
     surpriseBtn.addEventListener('click', () => {
-      // Play audio and trigger hearts
       audio.play().catch(e => console.log("Audio play blocked:", e));
       createHearts();
+      sparkleEffect();
     });
 
     const musicBtn = document.createElement('button');
@@ -172,7 +172,7 @@
         heart.style.top = Math.random() * 100 + 'vh';
         heart.style.fontSize = Math.random() * 24 + 16 + 'px';
         heart.style.opacity = 0.8;
-        heart.style.animation = floatHeart ${2 + Math.random() * 4}s ease-in-out infinite;
+        heart.style.animation = `floatHeart ${2 + Math.random() * 4}s ease-in-out infinite`;
         heart.style.zIndex = 999;
         document.body.appendChild(heart);
         setTimeout(() => heart.remove(), 10000);
